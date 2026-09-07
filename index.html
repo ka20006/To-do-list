@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern To-Do List</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="app-title">TaskFlow</h1>
+        <p class="app-subtitle">Stay organized and get things done</p>
+      </div>
+    </header>
+
+    <!-- Input Section -->
+    <form id="todo-form" class="todo-input-group" autocomplete="off">
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="task-input"
+          placeholder="What needs to be done today?"
+          maxlength="120"
+          aria-label="New task description"
+        >
+      </div>
+      <button type="submit" id="add-btn" class="btn btn-primary" aria-label="Add task">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        <span>Add Task</span>
+      </button>
+    </form>
+
+    <!-- Controls Bar: Filters & Actions -->
+    <div class="controls-bar">
+      <div class="filter-group" role="tablist" aria-label="Task filters">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="active" role="tab" aria-selected="false">Active</button>
+        <button class="filter-btn" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+      </div>
+      <button id="clear-completed-btn" class="btn btn-ghost" title="Clear all completed tasks">
+        Clear Completed
+      </button>
+    </div>
+
+    <!-- Task List Container -->
+    <main class="task-list-wrapper">
+      <ul id="task-list" class="task-list" aria-live="polite">
+        <!-- Dynamic task items injected via JavaScript -->
+      </ul>
+
+      <!-- Empty State View -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 14 14"></polyline>
+          </svg>
+        </div>
+        <p class="empty-text">No tasks found</p>
+        <p class="empty-subtext">Add a new task to get started!</p>
+      </div>
+    </main>
+
+    <!-- Footer / Counter Status -->
+    <footer class="app-footer">
+      <span id="task-counter" class="task-counter">0 tasks remaining</span>
+      <span id="total-counter" class="total-counter">Total: 0</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
